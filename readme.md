@@ -16,7 +16,7 @@ pre-built application jar file available in the [release](https://github.com/amr
 ### Install
 #### Run the application from source 
 Ensure that maven installed in your environment before proceeding the installation steps.
-if no maven install please follow the [maven installation and setup guide](#Install Maven)
+if no maven install please follow the [maven installation and setup guide](#Maven_Install)
 * clone the project source code  
 git clone https://github.com/amrutha-thalappan/UserManagement.git
 * change the directory to source code folder  
@@ -40,7 +40,9 @@ about API tesing with postman
 #### Access Database
 * open http://localhost:8080/h2-console/ in browser  
 username : admin  
-password : admin
+password : admin  
+
+<div id="Maven_Install"></div>  
 
 ### Install Maven
 * Download [maven](https://maven.apache.org/download.cgi#) 
