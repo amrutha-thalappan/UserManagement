@@ -12,6 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+/**
+ * This class provides implementations of all the methods declared in the UserService interface
+ */
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -50,13 +53,17 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    private User mapUserDto(UserDto userDto) {
+    private User mapUserDto(UserDto userDto) throws CustomException {
         User user = new User();
         user.setUsername(userDto.getUsername());
         user.setBirthDate(userDto.getBirthDate());
         user.setCountry(userDto.getCountry());
-        user.setPhoneNumber(userDto.getPhoneNumber());
-        user.setGender(GenderEnum.fromValue(userDto.getGender()));
+        if(userDto.getPhoneNumber() != null) {
+            user.setPhoneNumber(userDto.getPhoneNumber());
+        }
+        if(userDto.getGender() != null){
+            user.setGender(GenderEnum.fromValue(userDto.getGender()));
+        }
         return user;
 
     }
@@ -66,8 +73,12 @@ public class UserServiceImpl implements UserService {
         userDto.setUsername(user.getUsername());
         userDto.setBirthDate(user.getBirthDate());
         userDto.setCountry(user.getCountry());
-        userDto.setPhoneNumber(user.getPhoneNumber());
-        userDto.setGender(user.getGender().toString());
+        if(user.getPhoneNumber() != null) {
+            userDto.setPhoneNumber(user.getPhoneNumber());
+        }
+        if(user.getGender() != null) {
+            userDto.setGender(user.getGender().toString());
+        }
         return userDto;
     }
 }

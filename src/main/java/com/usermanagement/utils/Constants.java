@@ -1,5 +1,9 @@
 package com.usermanagement.utils;
 
+/**
+ *  A class to declare all the static constants
+ *  which is used across the application
+ */
 public class Constants {
 
     //validation constants
@@ -11,4 +15,5 @@ public class Constants {
     //Exception constants
     public static final String USERNAME_EXISTS = "Username already exists";
     public static final String USER_NOT_EXISTS = "User does not exist";
+    public static final String INVALID_GENDER = "Invalid gender input";
 }

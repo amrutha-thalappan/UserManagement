@@ -2,6 +2,9 @@ package com.usermanagement.dto;
 
 import java.util.List;
 
+/**
+ * Generic API response class for all failed execution of functionalities
+ */
 public class ErrorResponse {
 
     private String summary;
@@ -49,5 +52,15 @@ public class ErrorResponse {
 
     public void setStatusCode(Integer statusCode) {
         this.statusCode = statusCode;
+    }
+
+    @Override
+    public String toString() {
+        return "ErrorResponse{" +
+                "summary='" + summary + '\'' +
+                ", description='" + description + '\'' +
+                ", errorCode='" + errorCode + '\'' +
+                ", statusCode=" + statusCode +
+                '}';
     }
 }

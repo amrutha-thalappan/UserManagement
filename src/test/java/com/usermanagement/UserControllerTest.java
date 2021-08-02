@@ -32,6 +32,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * This class has mockito test method for all the methods of UserApiController class
+ */
 @RunWith(SpringRunner.class)
 @WebMvcTest(UserApiController.class)
 public class UserControllerTest {
@@ -66,6 +69,16 @@ public class UserControllerTest {
         userDto.setPhoneNumber("+33744948883");
     }
 
+    /**
+     * This test method includes:
+     * Testcase1: null userDto object as input
+     * Testcase2: Successful registration
+     * Testcase3: null username
+     * Testcase4: null birthdate
+     * Testcase5; null country
+     * Testcase6: user already with given username
+     * @throws Exception throws exception in the execution failure testcases
+     */
     @Test
     public void testAddUser() throws Exception{
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/user-management/api/v1/user/")
@@ -100,6 +113,13 @@ public class UserControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isConflict());
     }
 
+    /**
+     * This test method includes:
+     * Testcase1: Successful retrieval of user
+     * Testcase2: null username as input
+     * Testcase3: User does not exist
+     * @throws Exception throws exception in the execution failure testcases
+     */
     @Test
     public void testFindByUsername() throws Exception{
         Mockito.when(userService.findByUsername("Anand")).thenReturn(userDto);
@@ -120,7 +140,4 @@ public class UserControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
     }
-
-
-
 }

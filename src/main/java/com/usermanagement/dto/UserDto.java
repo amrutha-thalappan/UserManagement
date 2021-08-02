@@ -15,12 +15,10 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * User
+ * Data transfer class corresponds to user entity
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2021-07-30T23:10:58.140Z[GMT]")
-
-
 public class UserDto {
   @JsonProperty("username")
   private String username = null;
@@ -47,39 +45,6 @@ public class UserDto {
     this.phoneNumber = phoneNumber;
     this.gender = gender;
   }
-
-  /**
-   * Gender
-   */
-  /*public enum GenderEnum {
-    MALE("male"),
-    
-    FEMALE("female"),
-    
-    OTHER("other");
-
-    private String value;
-
-    GenderEnum(String value) {
-      this.value = value;
-    }
-
-    @Override
-    @JsonValue
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static GenderEnum fromValue(String text) {
-      for (GenderEnum b : GenderEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }*/
 
   public UserDto username(String username) {
     this.username = username;
@@ -206,7 +171,6 @@ public class UserDto {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class User {\n");
-    
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
     sb.append("    birthDate: ").append(toIndentedString(birthDate)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");

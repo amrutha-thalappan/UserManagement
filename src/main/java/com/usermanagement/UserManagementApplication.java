@@ -8,6 +8,9 @@ import org.springframework.context.annotation.ComponentScan;
 
 import springfox.documentation.oas.annotations.EnableOpenApi;
 
+/**
+ * Main class of the user management spring boot webservices which handles lifecycle of the application
+ */
 @SpringBootApplication
 @EnableOpenApi
 public class UserManagementApplication implements CommandLineRunner {

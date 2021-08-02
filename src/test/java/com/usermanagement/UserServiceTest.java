@@ -20,6 +20,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * This class has mockito test method for all the methods of UserService class
+ */
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceTest {
 
@@ -55,6 +58,13 @@ public class UserServiceTest {
         userExpected.setGender(GenderEnum.MALE);
     }
 
+    /**
+     * This test method includes all testcases of findByUsername method:
+     * Testcase1: null usrname
+     * Testcase2: User does not exist with given username
+     * Testcase3: User exists with given username
+     * @throws CustomException throws error when no user exist
+     */
     @Test
     public void testFindByUsername() throws CustomException {
         //Test case: input username is null
@@ -81,6 +91,14 @@ public class UserServiceTest {
         }
     }
 
+    /**
+     * This test method includes all testcases of input validation
+     * of username, birthdate and country during the user registration
+     * Testcase1: null username
+     * Testcase2: null birthdate
+     * Testcase3: null country
+     * @throws ParseException throws error if there is a problem in date parsing
+     */
     @Test
     public void testSaveUserInput() throws ParseException {
         //Test case: Username null
@@ -110,6 +128,11 @@ public class UserServiceTest {
         }
     }
 
+    /**
+     * This test method includes
+     * Testcase: successful registration
+     * @throws CustomException
+     */
     @Test
     public void testSaveUserNotExist() throws CustomException {
         //Test case: Successfull save of user object
@@ -126,6 +149,11 @@ public class UserServiceTest {
         Mockito.verify(userRepository, Mockito.times(1)).save(Mockito.any(User.class));
     }
 
+    /**
+     * This test method includes:
+     * Testcase: User with given username already exists
+     * @throws CustomException throw error while user with same username exists
+     */
     @Test
     public void testSaveUserAlreadyExists() throws CustomException {
         Mockito.when(userRepository.findByUsername("Anand")).thenReturn(userExpected);
@@ -146,7 +174,7 @@ public class UserServiceTest {
                                                 String errorMessage){
         Assert.assertNotNull(exception);
         Assert.assertEquals(statuscode, exception.getStatusCode());
-        Assert.assertEquals(errorCode, Integer.valueOf(exception.getErrorCode().value()));
+        Assert.assertEquals(errorCode, Integer.valueOf(exception.getStatusCode().value()));
         Assert.assertEquals(errorMessage, exception.getErrorMessage());
         Assertions.assertThatExceptionOfType(CustomException.class);
     }

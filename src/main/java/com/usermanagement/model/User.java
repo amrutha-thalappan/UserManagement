@@ -5,6 +5,9 @@ import com.usermanagement.enums.GenderEnum;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * Entity class which represents user data that can be persisted to the database
+ */
 @Entity
 @Table(name = "USER")
 public class User {

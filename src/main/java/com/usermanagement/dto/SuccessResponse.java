@@ -5,6 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
 
+/**
+ * Generic API response class for all successful execution of functionalities
+ */
 public class SuccessResponse {
   private Boolean success;
 
@@ -54,5 +57,15 @@ public class SuccessResponse {
 
   public void setCode(int code) {
     this.code = code;
+  }
+
+  @Override
+  public String toString() {
+    return "SuccessResponse{" +
+            "success=" + success +
+            ", messages='" + messages + '\'' +
+            ", data=" + data +
+            ", code=" + code +
+            '}';
   }
 }

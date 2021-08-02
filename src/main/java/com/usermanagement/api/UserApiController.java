@@ -23,6 +23,9 @@ import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
+/**
+ * This controller class provides implementations of all the methods declared in the UserApi interface
+ */
 @RestController
 public class UserApiController implements UserApi {
 
@@ -41,6 +44,13 @@ public class UserApiController implements UserApi {
         this.request = request;
     }
 
+
+    /**
+     * Controller layer POST API implementation for user registration
+     * @param userDto UserDto object to the Api, not null
+     * @return Response entity to return any object type as a response.
+     * Returns success or error response in the corresponding cases
+     */
     public ResponseEntity<?> addUser(@Parameter(in = ParameterIn.DEFAULT, description = "User object having necessary details that needs to be saved", required=true, schema=@Schema()) @Valid @RequestBody UserDto userDto) {
         if(userDto == null){
             return new ResponseEntity<>(new ErrorResponse("User Object null", "User object cannot be null", Constants.INPUT_NULL, 412), HttpStatus.PRECONDITION_FAILED);
@@ -49,16 +59,23 @@ public class UserApiController implements UserApi {
             userService.saveUser(userDto);
             return new ResponseEntity<>(new SuccessResponse(true, "User details saved successfully", null, 200),HttpStatus.OK);
         } catch (CustomException e) {
-            return new ResponseEntity<>(new ErrorResponse("Save failed", "User object cannot be saved", e.getErrorMessage(), e.getStatusCode()), e.getErrorCode());
+            return new ResponseEntity<>(new ErrorResponse("Save failed", "User object cannot be saved", e.getErrorMessage(), e.getErrorCode()), e.getStatusCode());
         }
         }
 
+    /**
+     * Controller layer GET API implementation to retrieve user by username
+     * @param username username of the user whose details has to be retrived
+     * @return Response entity to return any object type as a response.
+     * Returns success response with userDto object if user exists
+     * Otherwise return error response
+     */
     public ResponseEntity<?> getUserByUserName(@Parameter(in = ParameterIn.PATH, description = "The name that needs to be used to fetch the user details", required=true, schema=@Schema()) @PathVariable("username") String username) {
         try {
             UserDto userDto = userService.findByUsername(username);
             return new ResponseEntity<>(new SuccessResponse(true, "User details fetched successfully", userDto, 200),HttpStatus.OK);
         } catch (CustomException e) {
-            return new ResponseEntity<>(new ErrorResponse("User fetch failed", "Could not fetch user details", e.getErrorMessage(), e.getStatusCode()), e.getErrorCode());
+            return new ResponseEntity<>(new ErrorResponse("User fetch failed", "Could not fetch user details", e.getErrorMessage(), e.getErrorCode()), e.getStatusCode());
         }
     }
 
