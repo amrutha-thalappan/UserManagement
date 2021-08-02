@@ -46,7 +46,7 @@ Once the application has been started, the Swagger specification, User managemen
 #### Access API Specification
 * open http://localhost:8080 in browser in order to view the swagger specification about user management API
 #### Access API
-* Postman collection 'User APIs.postman_collection.json' has been created and stored inside [postman_collection](https://github.com/amrutha-thalappan/UserManagement/tree/master/src/test) folder inside project. 
+* Postman collection 'User APIs.postman_collection.json' has been created and stored inside [postman_collection](https://github.com/amrutha-thalappan/UserManagement/tree/master/src/test/resources) folder inside project. 
 * Import and open the collection in Postman
 * The succesfull registration API is stored inside 'User Registration' folder and all the validation APIs are stored in a folder 'Error cases' inside 'User Registration' folder
 * The succesfull user retrieval API is stored inside 'Retrieve User' folder and all the validation APIs are stored in a folder 'Error cases' inside 'Retrive User' folder
