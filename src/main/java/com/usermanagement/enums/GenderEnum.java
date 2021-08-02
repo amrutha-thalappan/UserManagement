@@ -27,7 +27,7 @@ public enum GenderEnum {
     @JsonCreator
     public static GenderEnum fromValue(String text) {
         for (GenderEnum b : GenderEnum.values()) {
-            if (String.valueOf(b.value).equals(text)) {
+            if (String.valueOf(b.value).equalsIgnoreCase(text)) {
                 return b;
             }
         }
