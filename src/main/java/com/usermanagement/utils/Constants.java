@@ -26,4 +26,5 @@ public class Constants {
     public static final Integer USERNAME_EXISTS_CODE = 40901;
     public static final Integer USER_NOT_EXISTS_CODE = 40401;
     public static final Integer RESTRICTED_AGE_LIMIT = 41705;
+    public static final Integer WRONG_DATE_FORMAT = 41706;
 }

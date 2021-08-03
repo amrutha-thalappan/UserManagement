@@ -175,4 +175,22 @@ public class UserServiceTest {
         Mockito.verify(userRepository, Mockito.times(0)).save(Mockito.any(User.class));
     }
 
+    /**
+     * This test method includes:
+     * Testcase1: birthDate and NotNull as input
+     * Testcase2: birthDate and AgeLimit as input
+     * Testcase3: username and NotNull as input
+     * Testcase4: country and NotNull as input
+     * Testcase5: any text as input
+     */
+    @Test
+    public void testGetValidationErrorCode() {
+        Assert.assertEquals(Constants.BIRTHDATE_NULL_CODE, userService.getValidationErrorCode("birthDate", "NotNull"));
+        Assert.assertEquals(Constants.RESTRICTED_AGE_LIMIT, userService.getValidationErrorCode("birthDate", "AgeLimit"));
+        Assert.assertEquals(Constants.USERNAME_NULL_CODE, userService.getValidationErrorCode("username", "NotNull"));
+        Assert.assertEquals(Constants.COUNTRY_NULL_CODE, userService.getValidationErrorCode("country", "NotNull"));
+        Assert.assertNull(userService.getValidationErrorCode("Test", "Test"));
+
+    }
+
 }

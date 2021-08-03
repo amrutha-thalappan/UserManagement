@@ -14,6 +14,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -104,4 +105,8 @@ public class UserApiController implements UserApi {
         return new ResponseEntity<>(ex, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<?> handleException(HttpMessageNotReadableException ex) {
+        return new ResponseEntity<>(new ErrorResponse("Save failed", "User object cannot be saved", ex.getCause().getMessage(), Constants.WRONG_DATE_FORMAT), HttpStatus.EXPECTATION_FAILED);
+    }
 }
