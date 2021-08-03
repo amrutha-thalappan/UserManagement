@@ -75,7 +75,7 @@ described below:
 
 #### Access API
 
-* Postman collection 'User APIs.postman_collection.json' has been created and stored
+* Postman collection 'User_APIs.postman_collection.json' has been created and stored
   inside [postman_collection](https://github.com/amrutha-thalappan/UserManagement/tree/master/src/test/resources) folder
   inside project.
 * Import and open the collection in Postman
