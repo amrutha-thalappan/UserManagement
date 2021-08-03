@@ -58,7 +58,7 @@ public class UserApiController implements UserApi {
      */
     public ResponseEntity<?> addUser(@Parameter(in = ParameterIn.DEFAULT, description = "User object having necessary details that needs to be saved", required = true, schema = @Schema()) @Valid @RequestBody UserDto userDto) {
         if (userDto == null) {
-            return new ResponseEntity<>(new ErrorResponse("User Object null", "User object cannot be null", Constants.INPUT_NULL, Constants.INPUT_NULL_CODE), HttpStatus.PRECONDITION_FAILED);
+            return new ResponseEntity<>(new ErrorResponse("User Object null", "User object cannot be null", Constants.INPUT_NULL, Constants.INPUT_NULL_CODE), HttpStatus.EXPECTATION_FAILED);
         }
         try {
             userService.saveUser(userDto);
@@ -94,7 +94,7 @@ public class UserApiController implements UserApi {
                 String field = ((DefaultMessageSourceResolvable) error.getArguments()[0]).getDefaultMessage();
                 Integer errorCode = userService.getValidationErrorCode(field, error.getCode());
                 if (errorCode != null) {
-                    ErrorResponse errorResponse = new ErrorResponse("Precondition failed", "Unable to process the request", error.getDefaultMessage(), errorCode);
+                    ErrorResponse errorResponse = new ErrorResponse("Expectation failed", "Unable to process the request", error.getDefaultMessage(), errorCode);
                     responses.add(errorResponse);
                 }
             }
@@ -107,6 +107,10 @@ public class UserApiController implements UserApi {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<?> handleException(HttpMessageNotReadableException ex) {
-        return new ResponseEntity<>(new ErrorResponse("Save failed", "User object cannot be saved", ex.getCause().getMessage(), Constants.WRONG_DATE_FORMAT), HttpStatus.EXPECTATION_FAILED);
+        System.out.println(ex);
+        if(ex != null && ex.getCause() != null){
+            return new ResponseEntity<>(new ErrorResponse("Save failed", "User object cannot be saved", ex.getCause().getMessage(), Constants.WRONG_DATE_FORMAT), HttpStatus.EXPECTATION_FAILED);
+        }
+        return new ResponseEntity<>("Unknown Error", HttpStatus.EXPECTATION_FAILED);
     }
 }

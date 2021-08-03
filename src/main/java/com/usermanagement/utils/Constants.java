@@ -22,7 +22,7 @@ public class Constants {
     public static final Integer BIRTHDATE_NULL_CODE = 41702;
     public static final Integer COUNTRY_NULL_CODE = 41703;
     public static final Integer INVALID_GENDER_CODE = 41704;
-    public static final Integer INPUT_NULL_CODE = 41201;
+    public static final Integer INPUT_NULL_CODE = 41707;
     public static final Integer USERNAME_EXISTS_CODE = 40901;
     public static final Integer USER_NOT_EXISTS_CODE = 40401;
     public static final Integer RESTRICTED_AGE_LIMIT = 41705;

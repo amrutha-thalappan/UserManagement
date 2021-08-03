@@ -81,7 +81,7 @@ public class UserControllerTest {
                 .accept(MediaType.APPLICATION_JSON);
 
         mockMvc.perform(mockRequest)
-                .andExpect(MockMvcResultMatchers.status().isBadRequest());
+                .andExpect(MockMvcResultMatchers.status().isExpectationFailed());
 
         mockRequest = MockMvcRequestBuilders.post("/user-management/api/v1/user/")
                 .contentType(MediaType.APPLICATION_JSON)
