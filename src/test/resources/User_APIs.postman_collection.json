@@ -1,0 +1,372 @@
+{
+	"info": {
+		"_postman_id": "c0ad1b70-2145-4022-b768-0ca75727a79b",
+		"name": "User_APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User_Registration",
+			"item": [
+				{
+					"name": "Error_Cases",
+					"item": [
+						{
+							"name": "02-Username already exists",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"Reynaldo\",\r\n    \"birthDate\" : \"1990-03-13\",\r\n    \"country\" : \"France\",\r\n    \"phoneNumber\" : \"+33986543677\",\r\n    \"gender\" : \"male\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/user-management/api/v1/user/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user-management",
+										"api",
+										"v1",
+										"user",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "03-Null input",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "null",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/user-management/api/v1/user/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user-management",
+										"api",
+										"v1",
+										"user",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "04-Null username",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : null,\r\n    \"birthDate\" : \"1990-03-13\",\r\n    \"country\" : \"France\",\r\n    \"phoneNumber\" : \"+33986543677\",\r\n    \"gender\" : \"male\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/user-management/api/v1/user/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user-management",
+										"api",
+										"v1",
+										"user",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "05-Null birthdate",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"John\",\r\n    \"birthDate\" : null,\r\n    \"country\" : \"France\",\r\n    \"phoneNumber\" : \"+33986543677\",\r\n    \"gender\" : \"male\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/user-management/api/v1/user/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user-management",
+										"api",
+										"v1",
+										"user",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "06-Null country",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"John\",\r\n    \"birthDate\" : \"1990-03-13\",\r\n    \"country\" : null,\r\n    \"phoneNumber\" : \"+33986543677\",\r\n    \"gender\" : \"male\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/user-management/api/v1/user/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user-management",
+										"api",
+										"v1",
+										"user",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "07-Country other than France",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"John\",\r\n    \"birthDate\" : \"1990-03-13\",\r\n    \"country\" : \"Spain\",\r\n    \"phoneNumber\" : \"+33986543677\",\r\n    \"gender\" : \"male\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/user-management/api/v1/user/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user-management",
+										"api",
+										"v1",
+										"user",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "08-Wrong date format",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"John\",\r\n    \"birthDate\" : \"13/03/1990\",\r\n    \"country\" : \"France\",\r\n    \"phoneNumber\" : \"+33986543677\",\r\n    \"gender\" : \"male\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/user-management/api/v1/user/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user-management",
+										"api",
+										"v1",
+										"user",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "09-Wrong gender",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"Angel\",\r\n    \"birthDate\" : \"1990-03-13\",\r\n    \"country\" : \"France\",\r\n    \"phoneNumber\" : \"+33986543677\",\r\n    \"gender\" : \"XXXXXX\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/user-management/api/v1/user/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user-management",
+										"api",
+										"v1",
+										"user",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "01-RegisterUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"Reynaldo\",\r\n    \"birthDate\" : \"1990-03-13\",\r\n    \"country\" : \"France\",\r\n    \"phoneNumber\" : \"+33986543677\",\r\n    \"gender\" : \"male\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/user-management/api/v1/user/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user-management",
+								"api",
+								"v1",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Retrieve_User",
+			"item": [
+				{
+					"name": "Error_Cases",
+					"item": [
+						{
+							"name": "02-Null username",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/user-management/api/v1/user/ ",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user-management",
+										"api",
+										"v1",
+										"user",
+										" "
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "03-No user having given username",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "01-GetUserDetails",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/user-management/api/v1/user/Reynaldo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user-management",
+								"api",
+								"v1",
+								"user",
+								"Reynaldo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
