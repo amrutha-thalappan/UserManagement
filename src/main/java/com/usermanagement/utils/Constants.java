@@ -17,7 +17,7 @@ public class Constants {
     public static final String USER_NOT_EXISTS = "User does not exist";
     public static final String INVALID_GENDER = "Invalid gender input";
 
-    //errorcode constants
+    //error code constants
     public static final Integer USERNAME_NULL_CODE = 41701;
     public static final Integer BIRTHDATE_NULL_CODE = 41702;
     public static final Integer COUNTRY_NULL_CODE = 41703;

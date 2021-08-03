@@ -36,8 +36,6 @@ import java.util.List;
 @Api(tags = "User")
 public class UserApiController implements UserApi {
 
-    private static final Logger log = LoggerFactory.getLogger(UserApiController.class);
-
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;

@@ -24,7 +24,7 @@ public class AspectLoggerComponent {
 
     private static final String POINTCUT = "execution(* com.usermanagement.api..*Controller.*(..))";
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**
      * This method will execute around each function execution of the controller

@@ -60,7 +60,7 @@ public class UserServiceTest {
 
     /**
      * This test method includes all testcases of findByUsername method:
-     * Testcase1: null usrname
+     * Testcase1: null username
      * Testcase2: User does not exist with given username
      * Testcase3: User exists with given username
      * @throws CustomException throws error when no user exist
@@ -131,11 +131,11 @@ public class UserServiceTest {
     /**
      * This test method includes
      * Testcase: successful registration
-     * @throws CustomException
+     * @throws CustomException raise appropriate exceptions
      */
     @Test
     public void testSaveUserNotExist() throws CustomException {
-        //Test case: Successfull save of user object
+        //Test case: Successful save of user object
         Mockito.when(userRepository.findByUsername("Anand")).thenReturn(null);
         try
         {
@@ -170,13 +170,12 @@ public class UserServiceTest {
     }
 
 
-    private static void validateCustomException(CustomException exception, Integer errorCode, Integer statuscode,
+    private static void validateCustomException(CustomException exception, Integer errorCode, Integer statusCode,
                                                 String errorMessage){
         Assert.assertNotNull(exception);
         Assert.assertEquals(errorCode, exception.getErrorCode());
-        Assert.assertEquals(statuscode, Integer.valueOf(exception.getStatusCode().value()));
+        Assert.assertEquals(statusCode, Integer.valueOf(exception.getStatusCode().value()));
         Assert.assertEquals(errorMessage, exception.getErrorMessage());
-        Assertions.assertThatExceptionOfType(CustomException.class);
     }
 
 }

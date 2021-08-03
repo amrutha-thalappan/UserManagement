@@ -16,7 +16,7 @@ public interface UserService {
      * @param userDto The Dto object from the API, not null
      * @throws CustomException Error which specifies exact reason for the validation failure
      */
-    public void saveUser(UserDto userDto) throws CustomException;
+    void saveUser(UserDto userDto) throws CustomException;
 
     /**
      * Service layer method declaration for retrieving user details by username
@@ -27,14 +27,14 @@ public interface UserService {
      * @return A valid UserDto object which contain all the details of the user
      * @throws CustomException Error which specifies exact reason for the validation failure
      */
-    public UserDto findByUsername(String username) throws CustomException;
+    UserDto findByUsername(String username) throws CustomException;
 
 
     /**
      * This method defines the custom error code for the validation of given input field
      * @param field input field in the UserDto object
-     * @param errorType Reason for the validation failure such as AgeLimi, NotNull etc.
+     * @param errorType Reason for the validation failure such as AgeLimit, NotNull etc.
      * @return Gives corresponding custom validation error code of the given field
      */
-    public Integer getValidationErrorCode(String field, String errorType);
+    Integer getValidationErrorCode(String field, String errorType);
 }

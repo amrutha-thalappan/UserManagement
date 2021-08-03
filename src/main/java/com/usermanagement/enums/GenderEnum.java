@@ -19,7 +19,7 @@ public enum GenderEnum {
 
     OTHER("other");
 
-    private String value;
+    private final String value;
 
     GenderEnum(String value) {
         this.value = value;

@@ -9,15 +9,15 @@ import org.springframework.http.HttpStatus;
 public class CustomException extends Exception{
 
     /**
-     * Defines the HTTPSTATUS code corresponds to the validation failure
+     * Defines the HTTP STATUS code corresponds to the validation failure
      */
     HttpStatus statusCode;
 
     /**
      * Defines the custom error code for validation failure
      * to identify exact root cause of the error
-     * as there can be multiple errors for each HTTPSTATUS
-     * The first three digits identifies HTTPSTATUS code
+     * as there can be multiple errors for each HTTP STATUS
+     * The first three digits identifies HTTP STATUS code
      * and this with next two digits identifies exact reason for the validation failure
      */
     Integer errorCode;

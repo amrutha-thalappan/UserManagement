@@ -44,8 +44,7 @@ public class UserServiceImpl implements UserService {
         }
         User user = userRepository.findByUsername(username);
         if(user != null){
-            UserDto userDto = mapUser(user);
-            return userDto;
+            return mapUser(user);
         }else{
             throw new CustomException(HttpStatus.NOT_FOUND, Constants.USER_NOT_EXISTS_CODE, Constants.USER_NOT_EXISTS);
         }
