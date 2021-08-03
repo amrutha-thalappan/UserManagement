@@ -54,7 +54,7 @@ Once the application has been started, the Swagger specification, User managemen
 A folder called 'data' having the h2 database files will be created in the first run of the application. Data will be restored to the database in each subsequent execution.  
 To view the database:
 * open http://localhost:8080/h2-console/ in browser  
-JDBC URL : jdbc:h2:file:./data/userdb
+JDBC URL : jdbc:h2:file:./data/userdb  
 Username : admin  
 Password : admin  
 * Click the table 'USER' inside the database 'userdb'.
