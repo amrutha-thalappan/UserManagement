@@ -5,28 +5,22 @@ import com.usermanagement.api.UserApiController;
 import com.usermanagement.dto.UserDto;
 import com.usermanagement.exception.CustomException;
 import com.usermanagement.service.UserService;
-import com.usermanagement.service.impl.UserServiceImpl;
 import com.usermanagement.utils.Constants;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -54,7 +48,7 @@ public class UserControllerTest {
     UserDto userDto;
 
     @Before
-    public void init(){
+    public void init() {
         userDto = new UserDto();
         userDto.setUsername("Anand");
         Date date = null;
@@ -77,10 +71,11 @@ public class UserControllerTest {
      * Testcase4: null birthdate
      * Testcase5; null country
      * Testcase6: user already with given username
+     *
      * @throws Exception throws exception in the execution failure testcases
      */
     @Test
-    public void testAddUser() throws Exception{
+    public void testAddUser() throws Exception {
         MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/user-management/api/v1/user/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON);
@@ -118,10 +113,11 @@ public class UserControllerTest {
      * Testcase1: Successful retrieval of user
      * Testcase2: null username as input
      * Testcase3: User does not exist
+     *
      * @throws Exception throws exception in the execution failure testcases
      */
     @Test
-    public void testFindByUsername() throws Exception{
+    public void testFindByUsername() throws Exception {
         Mockito.when(userService.findByUsername("Anand")).thenReturn(userDto);
         mockMvc.perform(MockMvcRequestBuilders
                         .get("/user-management/api/v1/user/Anand")

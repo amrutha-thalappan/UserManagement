@@ -22,16 +22,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void saveUser(UserDto userDto) throws CustomException {
-        if(userDto.getUsername() == null || userDto.getUsername().isEmpty()){
+        if (userDto.getUsername() == null || userDto.getUsername().isEmpty()) {
             throw new CustomException(HttpStatus.EXPECTATION_FAILED, Constants.USERNAME_NULL_CODE, Constants.USERNAME_NULL);
-        }if(userDto.getBirthDate() == null){
+        }
+        if (userDto.getBirthDate() == null) {
             throw new CustomException(HttpStatus.EXPECTATION_FAILED, Constants.BIRTHDATE_NULL_CODE, Constants.BIRTHDATE_NULL);
-        }if(userDto.getCountry() == null || userDto.getCountry().isEmpty()){
+        }
+        if (userDto.getCountry() == null || userDto.getCountry().isEmpty()) {
             throw new CustomException(HttpStatus.EXPECTATION_FAILED, Constants.COUNTRY_NULL_CODE, Constants.COUNTRY_NULL);
         }
-        if(userRepository.findByUsername(userDto.getUsername()) != null){
+        if (userRepository.findByUsername(userDto.getUsername()) != null) {
             throw new CustomException(HttpStatus.CONFLICT, Constants.USERNAME_EXISTS_CODE, Constants.USERNAME_EXISTS);
-        }else {
+        } else {
             User user = mapUserDto(userDto);
             userRepository.save(user);
         }
@@ -39,28 +41,28 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto findByUsername(String username) throws CustomException {
-        if(username == null || username.isEmpty()){
+        if (username == null || username.isEmpty()) {
             throw new CustomException(HttpStatus.EXPECTATION_FAILED, Constants.USERNAME_NULL_CODE, Constants.USERNAME_NULL);
         }
         User user = userRepository.findByUsername(username);
-        if(user != null){
+        if (user != null) {
             return mapUser(user);
-        }else{
+        } else {
             throw new CustomException(HttpStatus.NOT_FOUND, Constants.USER_NOT_EXISTS_CODE, Constants.USER_NOT_EXISTS);
         }
     }
 
     @Override
     public Integer getValidationErrorCode(String field, String errorType) {
-        if(field.equalsIgnoreCase("birthDate")){
-            if(errorType.equalsIgnoreCase("AgeLimit")){
+        if (field.equalsIgnoreCase("birthDate")) {
+            if (errorType.equalsIgnoreCase("AgeLimit")) {
                 return Constants.RESTRICTED_AGE_LIMIT;
-            }else {
+            } else {
                 return Constants.BIRTHDATE_NULL_CODE;
             }
-        }else if(field.equalsIgnoreCase(("username"))){
+        } else if (field.equalsIgnoreCase(("username"))) {
             return Constants.USERNAME_NULL_CODE;
-        }else if(field.equalsIgnoreCase("country")){
+        } else if (field.equalsIgnoreCase("country")) {
             return Constants.COUNTRY_NULL_CODE;
         }
         return null;
@@ -71,10 +73,10 @@ public class UserServiceImpl implements UserService {
         user.setUsername(userDto.getUsername());
         user.setBirthDate(userDto.getBirthDate());
         user.setCountry(userDto.getCountry());
-        if(userDto.getPhoneNumber() != null) {
+        if (userDto.getPhoneNumber() != null) {
             user.setPhoneNumber(userDto.getPhoneNumber());
         }
-        if(userDto.getGender() != null){
+        if (userDto.getGender() != null) {
             user.setGender(GenderEnum.fromValue(userDto.getGender()));
         }
         return user;
@@ -86,10 +88,10 @@ public class UserServiceImpl implements UserService {
         userDto.setUsername(user.getUsername());
         userDto.setBirthDate(user.getBirthDate());
         userDto.setCountry(user.getCountry());
-        if(user.getPhoneNumber() != null) {
+        if (user.getPhoneNumber() != null) {
             userDto.setPhoneNumber(user.getPhoneNumber());
         }
-        if(user.getGender() != null) {
+        if (user.getGender() != null) {
             userDto.setGender(user.getGender().toString());
         }
         return userDto;

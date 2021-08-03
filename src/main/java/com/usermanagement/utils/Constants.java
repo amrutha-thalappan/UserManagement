@@ -1,8 +1,8 @@
 package com.usermanagement.utils;
 
 /**
- *  A class to declare all the static constants
- *  which is used across the application
+ * A class to declare all the static constants
+ * which is used across the application
  */
 public class Constants {
 

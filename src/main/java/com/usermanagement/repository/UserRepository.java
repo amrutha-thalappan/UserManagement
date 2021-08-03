@@ -14,6 +14,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     /**
      * JPA method declaration to retrieve User object by passing username as argument
+     *
      * @param username username of the user whose details have to be retrieved
      * @return A valid User object having the given username
      */

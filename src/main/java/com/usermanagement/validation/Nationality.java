@@ -15,6 +15,8 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = CountryValidator.class)
 public @interface Nationality {
     String message() default "{com.usermanagement.validation.Nationality.message}";
+
     Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
 }

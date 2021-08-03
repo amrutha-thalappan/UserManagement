@@ -17,8 +17,9 @@ public class AgeValidator implements ConstraintValidator<AgeLimit, Date> {
 
     /**
      * Overridden method which checks that the user with given birthdate is adult or not
+     *
      * @param birthDate date of birth of the registering user, not null
-     * @param context Provides contextual data and operation when applying a given constraint validator
+     * @param context   Provides contextual data and operation when applying a given constraint validator
      * @return True if the user is adult, otherwise vise versa
      */
     @Override

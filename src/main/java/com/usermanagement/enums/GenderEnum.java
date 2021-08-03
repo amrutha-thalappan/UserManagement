@@ -2,7 +2,6 @@ package com.usermanagement.enums;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.usermanagement.dto.UserDto;
 import com.usermanagement.exception.CustomException;
 import com.usermanagement.utils.Constants;
 import org.springframework.http.HttpStatus;
@@ -33,6 +32,7 @@ public enum GenderEnum {
 
     /**
      * This method is to give the enum property corresponds to the given value
+     *
      * @param text given gender input
      * @return Enum property corresponds to the input string
      * @throws CustomException Error which specifies invalid gender input

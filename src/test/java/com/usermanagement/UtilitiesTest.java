@@ -3,8 +3,6 @@ package com.usermanagement;
 import com.usermanagement.utils.Utilities;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,6 +18,7 @@ public class UtilitiesTest {
      * Testcase1: validation of age with wrong date format of birthdate
      * Testcase2: Validation of age with right format of birthdate
      * Testcase3: validation age with null birthdate
+     *
      * @throws ParseException throws exception if date parsing failed
      */
     @Test

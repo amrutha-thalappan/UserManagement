@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
  * This is a custom exception class for exception handling
  * It has three custom attributes errorCode, statusCode and errorMessage to define and throw the exception
  */
-public class CustomException extends Exception{
+public class CustomException extends Exception {
 
     /**
      * Defines the HTTP STATUS code corresponds to the validation failure
