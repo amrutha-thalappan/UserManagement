@@ -170,11 +170,11 @@ public class UserServiceTest {
     }
 
 
-    private static void validateCustomException(CustomException exception, Integer statuscode, Integer errorCode,
+    private static void validateCustomException(CustomException exception, Integer errorCode, Integer statuscode,
                                                 String errorMessage){
         Assert.assertNotNull(exception);
-        Assert.assertEquals(statuscode, exception.getStatusCode());
-        Assert.assertEquals(errorCode, Integer.valueOf(exception.getStatusCode().value()));
+        Assert.assertEquals(errorCode, exception.getErrorCode());
+        Assert.assertEquals(statuscode, Integer.valueOf(exception.getStatusCode().value()));
         Assert.assertEquals(errorMessage, exception.getErrorMessage());
         Assertions.assertThatExceptionOfType(CustomException.class);
     }
