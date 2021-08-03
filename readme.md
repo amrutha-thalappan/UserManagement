@@ -14,7 +14,7 @@ two optional attributes such as:
 
 This API restricts registration of an user with an existing username. Only adult french residents are allowed to register to the system. 
 #### Show details of a registered user  
-Provides Get Api to view the details of registerd user by giving username as input.  If user does nt exist with the given username then corresponding error response will be shown. 
+Provides Get Api to view the details of registerd user by giving username as input.  If user does not exist with the given username then corresponding error response will be shown. 
 
 ## Quickstart
 User Management service is available a buildable source code, but easiest way to install and run application is to use
@@ -54,8 +54,9 @@ Once the application has been started, the Swagger specification, User managemen
 A folder called 'data' having the h2 database files will be created in the first run of the application. Data will be restored to the database in each subsequent execution.  
 To view the database:
 * open http://localhost:8080/h2-console/ in browser  
-username : admin  
-password : admin  
+JDBC URL : jdbc:h2:file:./data/userdb  
+Username : admin  
+Password : admin  
 * Click the table 'USER' inside the database 'userdb'.
 * Execute the query shown in the query box to view the table data.
 
