@@ -2,7 +2,7 @@
 
 This is a webservice platform provides a bare minimum functionality to store and view user details. It is developed as
 JAVA spring boot application with rest API capabilities. These APIs handle user registration process and retrieval of a
-particular user.
+particular user. More detailed technical specification about application interfaces, classes and methods are available in the [javadoc](https://github.com/amrutha-thalappan/UserManagement/tree/master/javadoc) section of project .
 
 ## Features
 
