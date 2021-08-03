@@ -1,0 +1,12 @@
+com.usermanagement
+com.usermanagement.api
+com.usermanagement.configuration
+com.usermanagement.dto
+com.usermanagement.enums
+com.usermanagement.exception
+com.usermanagement.model
+com.usermanagement.repository
+com.usermanagement.service
+com.usermanagement.service.impl
+com.usermanagement.utils
+com.usermanagement.validation
