@@ -79,10 +79,10 @@ described below:
   inside [postman_collection](https://github.com/amrutha-thalappan/UserManagement/tree/master/src/test/resources) folder
   inside project.
 * Import and open the collection in Postman
-* The successful registration API is stored inside 'User Registration' folder and all the validation APIs are stored in
-  a folder 'Error cases' inside 'User Registration' folder
-* The successful user retrieval API is stored inside 'Retrieve User' folder and all the validation APIs are stored in a
-  folder 'Error cases' inside 'Retrieve User' folder
+* The successful registration API is stored inside 'User_Registration' folder (/User_APIs/User_Regstration)  
+   * All the validation APIs are stored in a folder 'Error cases' inside 'User_Registration' folder (/User_APIs/User_Regstration/Error_Cases) 
+* The successful user retrieval API is stored inside 'Retrieve_User' folder (/User_APIs/Retrieve_User)  
+   * All the validation APIs are stored in a folder 'Error cases' inside 'Retrieve_User' folder (/User_APIs/Retrieve_User/Error_Cases)
 
 #### Access Database
 
