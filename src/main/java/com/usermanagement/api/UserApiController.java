@@ -7,26 +7,33 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.usermanagement.exception.CustomException;
 import com.usermanagement.service.UserService;
 import com.usermanagement.utils.Constants;
+import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This controller class provides implementations of all the methods declared in the UserApi interface
  */
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2021-07-30T23:10:58.140Z[GMT]")
 @RestController
+@Api(tags = "User")
 public class UserApiController implements UserApi {
 
     private static final Logger log = LoggerFactory.getLogger(UserApiController.class);
@@ -53,7 +60,7 @@ public class UserApiController implements UserApi {
      */
     public ResponseEntity<?> addUser(@Parameter(in = ParameterIn.DEFAULT, description = "User object having necessary details that needs to be saved", required=true, schema=@Schema()) @Valid @RequestBody UserDto userDto) {
         if(userDto == null){
-            return new ResponseEntity<>(new ErrorResponse("User Object null", "User object cannot be null", Constants.INPUT_NULL, 412), HttpStatus.PRECONDITION_FAILED);
+            return new ResponseEntity<>(new ErrorResponse("User Object null", "User object cannot be null", Constants.INPUT_NULL, Constants.INPUT_NULL_CODE), HttpStatus.PRECONDITION_FAILED);
         }
         try {
             userService.saveUser(userDto);
@@ -77,6 +84,26 @@ public class UserApiController implements UserApi {
         } catch (CustomException e) {
             return new ResponseEntity<>(new ErrorResponse("User fetch failed", "Could not fetch user details", e.getErrorMessage(), e.getErrorCode()), e.getStatusCode());
         }
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<?> handleException(MethodArgumentNotValidException ex) {
+        List<ObjectError> objectErrors = ex.getBindingResult().getAllErrors();
+        List<ErrorResponse> responses = new ArrayList<>();
+        for(ObjectError error: objectErrors){
+            if(error.getArguments().length > 0){
+                String field = ((DefaultMessageSourceResolvable)error.getArguments()[0]).getDefaultMessage();
+                Integer errorCode = userService.getValidationErrorCode(field, error.getCode());
+                if(errorCode != null) {
+                    ErrorResponse errorResponse = new ErrorResponse("Precondition failed", "Unable to process the request",error.getDefaultMessage(), errorCode);
+                    responses.add(errorResponse);
+                }
+            }
+        }
+        if(!responses.isEmpty()){
+            return new ResponseEntity<>(responses, HttpStatus.PRECONDITION_FAILED);
+        }
+        return new ResponseEntity<>(ex, HttpStatus.BAD_REQUEST);
     }
 
 }

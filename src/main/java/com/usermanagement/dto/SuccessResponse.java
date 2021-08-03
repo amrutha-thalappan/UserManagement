@@ -8,25 +8,33 @@ import org.springframework.validation.annotation.Validated;
 /**
  * Generic API response class for all successful execution of functionalities
  */
+@Validated
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2021-07-30T23:10:58.140Z[GMT]")
 public class SuccessResponse {
+
+  @JsonProperty("success")
   private Boolean success;
 
-  private String messages;
+  @JsonProperty("message")
+  private String message;
 
+  @JsonProperty("data")
   private Object data;
 
+  @JsonProperty("code")
   private int code;
 
   public SuccessResponse() {
   }
 
-  public SuccessResponse(Boolean success, String messages, Object data, int code) {
+  public SuccessResponse(Boolean success, String message, Object data, int code) {
     this.success = success;
-    this.messages = messages;
+    this.message = message;
     this.data = data;
     this.code = code;
   }
 
+  @Schema(description = "")
   public Boolean getSuccess() {
     return success;
   }
@@ -35,14 +43,16 @@ public class SuccessResponse {
     this.success = success;
   }
 
-  public String getMessages() {
-    return messages;
+  @Schema(description = "")
+  public String getMessage() {
+    return message;
   }
 
-  public void setMessages(String messages) {
-    this.messages = messages;
+  public void setMessage(String message) {
+    this.message = message;
   }
 
+  @Schema(description = "")
   public Object getData() {
     return data;
   }
@@ -51,6 +61,7 @@ public class SuccessResponse {
     this.data = data;
   }
 
+  @Schema(description = "")
   public int getCode() {
     return code;
   }
@@ -63,7 +74,7 @@ public class SuccessResponse {
   public String toString() {
     return "SuccessResponse{" +
             "success=" + success +
-            ", messages='" + messages + '\'' +
+            ", messages='" + message + '\'' +
             ", data=" + data +
             ", code=" + code +
             '}';

@@ -28,4 +28,13 @@ public interface UserService {
      * @throws CustomException Error which specifies exact reason for the validation failure
      */
     public UserDto findByUsername(String username) throws CustomException;
+
+
+    /**
+     * This method defines the custom error code for the validation of given input field
+     * @param field input field in the UserDto object
+     * @param errorType Reason for the validation failure such as AgeLimi, NotNull etc.
+     * @return Gives corresponding custom validation error code of the given field
+     */
+    public Integer getValidationErrorCode(String field, String errorType);
 }

@@ -44,6 +44,6 @@ public enum GenderEnum {
                 return b;
             }
         }
-        throw new CustomException(HttpStatus.EXPECTATION_FAILED, 41704, Constants.INVALID_GENDER);
+        throw new CustomException(HttpStatus.EXPECTATION_FAILED, Constants.INVALID_GENDER_CODE, Constants.INVALID_GENDER);
     }
 }
