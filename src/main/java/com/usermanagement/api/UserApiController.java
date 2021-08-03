@@ -111,6 +111,6 @@ public class UserApiController implements UserApi {
         if(ex != null && ex.getCause() != null){
             return new ResponseEntity<>(new ErrorResponse("Save failed", "User object cannot be saved", ex.getCause().getMessage(), Constants.WRONG_DATE_FORMAT), HttpStatus.EXPECTATION_FAILED);
         }
-        return new ResponseEntity<>("Unknown Error", HttpStatus.EXPECTATION_FAILED);
+        return new ResponseEntity<>(new ErrorResponse("Save failed", "No data available to save", Constants.INPUT_NULL, Constants.INPUT_NULL_CODE), HttpStatus.EXPECTATION_FAILED);
     }
 }

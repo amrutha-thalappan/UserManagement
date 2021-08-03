@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto findByUsername(String username) throws CustomException {
-        if (username == null || username.isEmpty()) {
+        if (username.trim() == null || username.trim().isEmpty()) {
             throw new CustomException(HttpStatus.EXPECTATION_FAILED, Constants.USERNAME_NULL_CODE, Constants.USERNAME_NULL);
         }
         User user = userRepository.findByUsername(username);
