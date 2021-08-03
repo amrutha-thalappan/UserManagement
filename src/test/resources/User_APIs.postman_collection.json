@@ -337,7 +337,21 @@
 							"request": {
 								"method": "GET",
 								"header": [],
-								"url": null
+								"url": {
+									"raw": "http://localhost:8080/user-management/api/v1/user/Philipe",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"user-management",
+										"api",
+										"v1",
+										"user",
+										"Philipe"
+									]
+								}
 							},
 							"response": []
 						}
