@@ -35,6 +35,14 @@ public class UserServiceTest {
     @InjectMocks
     UserServiceImpl userService;
 
+    private static void validateCustomException(CustomException exception, Integer errorCode, Integer statusCode,
+                                                String errorMessage) {
+        Assert.assertNotNull(exception);
+        Assert.assertEquals(errorCode, exception.getErrorCode());
+        Assert.assertEquals(statusCode, Integer.valueOf(exception.getStatusCode().value()));
+        Assert.assertEquals(errorMessage, exception.getErrorMessage());
+    }
+
     @Before
     public void init() {
         userDto = new UserDto();
@@ -165,15 +173,6 @@ public class UserServiceTest {
         }
         Mockito.verify(userRepository, Mockito.times(1)).findByUsername(Mockito.matches("Anand"));
         Mockito.verify(userRepository, Mockito.times(0)).save(Mockito.any(User.class));
-    }
-
-
-    private static void validateCustomException(CustomException exception, Integer errorCode, Integer statusCode,
-                                                String errorMessage) {
-        Assert.assertNotNull(exception);
-        Assert.assertEquals(errorCode, exception.getErrorCode());
-        Assert.assertEquals(statusCode, Integer.valueOf(exception.getStatusCode().value()));
-        Assert.assertEquals(errorMessage, exception.getErrorMessage());
     }
 
 }

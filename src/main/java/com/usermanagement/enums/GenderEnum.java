@@ -24,12 +24,6 @@ public enum GenderEnum {
         this.value = value;
     }
 
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.valueOf(value);
-    }
-
     /**
      * This method is to give the enum property corresponds to the given value
      *
@@ -45,5 +39,11 @@ public enum GenderEnum {
             }
         }
         throw new CustomException(HttpStatus.EXPECTATION_FAILED, Constants.INVALID_GENDER_CODE, Constants.INVALID_GENDER);
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+        return String.valueOf(value);
     }
 }
