@@ -102,7 +102,7 @@ To view the database:
 ### Access Javadoc  
 
 * After cloning the project, a [javadoc](https://github.com/amrutha-thalappan/UserManagement/tree/master/javadoc) folder can be seen inside UserMangement
-* Open 'index.html' file inside the javadoc folder to see the javadoc documentation for classes, interfaces and methods  
+* Open 'index.html' file in browser from javadoc folder to see the javadoc documentation for classes, interfaces and methods  
 
 <div id="Maven_Install"></div>  
 
