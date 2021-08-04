@@ -2,7 +2,7 @@
 
 This is a webservice platform provides a bare minimum functionality to store and view user details. It is developed as
 JAVA spring boot application with rest API capabilities. These APIs handle user registration process and retrieval of a
-particular user. More detailed technical specification about application interfaces, classes and methods are available in the [javadoc](https://github.com/amrutha-thalappan/UserManagement/tree/master/javadoc) section of project .
+particular user. More detailed technical specification about application interfaces, classes and methods are available in the javadoc documentation of project and you can find [Access Javadoc](#Access_Javadoc) section for more details.
 
 ## Features
 
@@ -95,7 +95,14 @@ To view the database:
   Username : admin  
   Password : admin
 * Click the table 'USER' inside the database 'userdb'.
-* Execute the query shown in the query box to view the table data.
+* Execute the query shown in the query box to view the table data.  
+
+<div id="Access_Javadoc"></div>  
+
+### Access Javadoc  
+
+* After cloning the project, a [javadoc](https://github.com/amrutha-thalappan/UserManagement/tree/master/javadoc) folder can be seen inside UserMangement
+* Open 'index.html' file inside the javadoc folder to see the javadoc documentation for classes, interfaces and methods  
 
 <div id="Maven_Install"></div>  
 
